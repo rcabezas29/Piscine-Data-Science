@@ -5,7 +5,7 @@ source .env
 
 # Check if an argument is provided
 if [ $# -eq 0 ]; then
-    echo "Usage: $0 <PathToFolderWithCSV>"
+    echo "Usage: $0 <PathToCSV>"
     exit 1
 fi
 

@@ -15,6 +15,7 @@ for filename in $1/*.csv; do
 
     echo $TABLE_NAME
     # Copy the CSV file into the Docker container
+    echo "Copying csv to container"
     docker cp "$filename" ex00_db_1:/home/$TABLE_NAME.csv
 
     # Generate SQL commands
@@ -35,5 +36,6 @@ EOF
 )
 
     # # Execute SQL commands in PostgreSQL Docker container
+    echo "Executing query for $TABLE_NAME"
     docker exec -i ex00_db_1 psql -U $POSTGRES_USER -d $POSTGRES_DB -h localhost <<< "$SQL_COMMANDS"
 done
